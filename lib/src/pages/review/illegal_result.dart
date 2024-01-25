@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pactcheck_front/src/pages/review/upload_signed_contract.dart';
 
 class IllegalResult extends StatelessWidget {
+  const IllegalResult({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,15 +11,15 @@ class IllegalResult extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: Padding(
-          padding: EdgeInsets.only(left: 10),
+          padding: const EdgeInsets.only(left: 10),
           child: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Color(0xff000062)),
+            icon: const Icon(Icons.arrow_back_ios, color: Color(0xff000062)),
             onPressed: () {
               Navigator.pop(context);
             },
           ),
         ),
-        actions: [],
+        actions: const [],
       ),
       body: Column(
         children: [
@@ -33,7 +35,7 @@ class IllegalResult extends StatelessWidget {
           Container(
             width: 300,
             height: 350,
-            color: Color(0xffd9d9d9),
+            color: const Color(0xffd9d9d9),
             child: const Text(
               "content",
               style: TextStyle(
@@ -49,12 +51,12 @@ class IllegalResult extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => UploadSignedContract()),
+                      builder: (context) => const UploadSignedContract()),
                 );
               },
               style: ElevatedButton.styleFrom(
-                primary: Color(0xff000062),
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                backgroundColor: const Color(0xff000062),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
