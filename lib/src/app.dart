@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pactcheck_front/src/pages/review/past-contracts/past_contracts_list.dart';
 import 'package:pactcheck_front/src/pages/review/select_country.dart';
 
 class App extends StatelessWidget {
@@ -41,7 +42,12 @@ class App extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PastContractsList()),
+                );
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xffffffff),
                 padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
