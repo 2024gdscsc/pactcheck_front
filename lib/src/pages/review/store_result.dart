@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pactcheck_front/src/app.dart';
+import 'package:pactcheck_front/src/pages/past-contracts/past_contract_view.dart';
 
 class StoreResult extends StatelessWidget {
   const StoreResult({super.key});
@@ -34,10 +35,17 @@ class StoreResult extends StatelessWidget {
             ),
             const SizedBox(height: 300),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const PastContractView()),
+                );
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xff000062),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -60,7 +68,8 @@ class StoreResult extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xffffffff),
-                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                   side: const BorderSide(
