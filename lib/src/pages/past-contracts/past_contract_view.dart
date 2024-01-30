@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pactcheck_front/src/app.dart';
-import 'package:pactcheck_front/src/pages/past-contracts/past_contracts_list.dart';
+import 'package:pactcheck_front/src/pages/past-contracts/past_original_photo.dart';
 
 class PastContractView extends StatefulWidget {
   const PastContractView({super.key});
@@ -56,7 +56,7 @@ class _PastContractViewState extends State<PastContractView> {
         children: <Widget>[
           Container(
             width: 318,
-            height: 62,
+            height: 65,
             decoration: ShapeDecoration(
               color: Color(0x33252553),
               shape: RoundedRectangleBorder(
@@ -87,7 +87,7 @@ class _PastContractViewState extends State<PastContractView> {
           const SizedBox(height: 40),
           Container(
             width: 318,
-            height: 520,
+            height: 350,
             decoration: BoxDecoration(color: Color(0xFFD9D9D9)),
           ),
           const SizedBox(height: 40),
@@ -96,7 +96,7 @@ class _PastContractViewState extends State<PastContractView> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const App()),
+                  MaterialPageRoute(builder: (context) => PastOriginalPhoto()),
                 );
               },
               style: ElevatedButton.styleFrom(

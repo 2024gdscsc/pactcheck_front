@@ -47,7 +47,8 @@ class App extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const PastContractsList()),
+                  MaterialPageRoute(
+                      builder: (context) => const PastContractsList()),
                 );
               },
               style: ElevatedButton.styleFrom(
