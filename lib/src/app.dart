@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pactcheck_front/src/pages/past-contracts/past_contracts_list.dart';
 import 'package:pactcheck_front/src/pages/review/select_country.dart';
 
 class App extends StatelessWidget {
+  const App({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,12 +22,14 @@ class App extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SelectCountry()),
+                  MaterialPageRoute(
+                      builder: (context) => const SelectCountry()),
                 );
               },
               style: ElevatedButton.styleFrom(
-                primary: Color(0xff000062),
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                backgroundColor: const Color(0xff000062),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -39,10 +44,17 @@ class App extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const PastContractsList()),
+                );
+              },
               style: ElevatedButton.styleFrom(
-                primary: Color(0xffffffff),
-                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 8),
+                backgroundColor: const Color(0xffffffff),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                   side: const BorderSide(

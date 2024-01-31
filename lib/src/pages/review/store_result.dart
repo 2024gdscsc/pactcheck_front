@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:pactcheck_front/src/app.dart';
+import 'package:pactcheck_front/src/pages/past-contracts/past_contract_view.dart';
+import 'package:pactcheck_front/src/pages/past-contracts/past_original_photo.dart';
 
 class StoreResult extends StatelessWidget {
+  const StoreResult({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,15 +13,15 @@ class StoreResult extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: Padding(
-          padding: EdgeInsets.only(left: 10),
+          padding: const EdgeInsets.only(left: 10),
           child: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Color(0xff000062)),
+            icon: const Icon(Icons.arrow_back_ios, color: Color(0xff000062)),
             onPressed: () {
               Navigator.pop(context);
             },
           ),
         ),
-        actions: [],
+        actions: const [],
       ),
       body: Center(
         child: Column(
@@ -32,10 +36,16 @@ class StoreResult extends StatelessWidget {
             ),
             const SizedBox(height: 300),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PastOriginalPhoto()),
+                );
+              },
               style: ElevatedButton.styleFrom(
-                primary: Color(0xff000062),
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                backgroundColor: const Color(0xff000062),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -53,12 +63,13 @@ class StoreResult extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => App()),
+                  MaterialPageRoute(builder: (context) => const App()),
                 );
               },
               style: ElevatedButton.styleFrom(
-                primary: Color(0xffffffff),
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 8),
+                backgroundColor: const Color(0xffffffff),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                   side: const BorderSide(

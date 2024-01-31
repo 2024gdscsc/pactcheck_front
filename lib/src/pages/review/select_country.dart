@@ -3,6 +3,8 @@ import 'package:pactcheck_front/src/pages/review/upload_contract.dart';
 import 'package:country_picker/country_picker.dart';
 
 class SelectCountry extends StatefulWidget {
+  const SelectCountry({super.key});
+
   @override
   _SelectCountryState createState() => _SelectCountryState();
 }
@@ -17,15 +19,15 @@ class _SelectCountryState extends State<SelectCountry> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: Padding(
-          padding: EdgeInsets.only(left: 10),
+          padding: const EdgeInsets.only(left: 10),
           child: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Color(0xff000062)),
+            icon: const Icon(Icons.arrow_back_ios, color: Color(0xff000062)),
             onPressed: () {
               Navigator.pop(context);
             },
           ),
         ),
-        actions: [],
+        actions: const [],
       ),
       extendBodyBehindAppBar: true,
       body: Column(
@@ -47,11 +49,11 @@ class _SelectCountryState extends State<SelectCountry> {
             Container(
               width: 320,
               height: 50,
-              margin: EdgeInsets.only(left: 30),
-              padding: EdgeInsets.only(left: 10),
+              margin: const EdgeInsets.only(left: 30),
+              padding: const EdgeInsets.only(left: 10),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color(0xff000062),
+                  color: const Color(0xff000062),
                   width: 3.0,
                 ),
               ),
@@ -72,13 +74,13 @@ class _SelectCountryState extends State<SelectCountry> {
                     if (selectedCountry != null)
                       Text(
                         selectedCountry!.name,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           color: Color(0xff000062),
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                    Icon(
+                    const Icon(
                       Icons.arrow_drop_down,
                       color: Color(0xff000062),
                     ),
@@ -86,18 +88,18 @@ class _SelectCountryState extends State<SelectCountry> {
                 ),
               ),
             ),
-            SizedBox(height: 300),
+            const SizedBox(height: 300),
             Center(
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => UploadContract()),
+                    MaterialPageRoute(builder: (context) => const UploadContract()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xffffffff),
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 8),
+                  backgroundColor: const Color(0xffffffff),
+                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 8),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     side: const BorderSide(
