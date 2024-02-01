@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:pactcheck_front/src/components/image_picker.dart';
 import 'package:pactcheck_front/src/pages/review/illegal_result.dart';
 
-class UploadContract extends StatelessWidget {
+class UploadContract extends StatefulWidget {
   const UploadContract({super.key});
+
+  @override
+  _UploadContractState createState() => _UploadContractState();
+}
+
+class _UploadContractState extends State<UploadContract> {
+  List<String> selectedImagePaths = [];
+
+  void handleImagePicked(String path) {
+    setState(() {
+      selectedImagePaths.add(path);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,25 +37,22 @@ class UploadContract extends StatelessWidget {
       ),
       body: Column(
         children: [
-          // 사진 업로드 로직 추가
           const SizedBox(height: 20),
-          Container(
-            width: 300,
-            height: 550,
-            color: const Color(0xffd9d9d9),
-          ),
+          PickImage(onImagePicked: handleImagePicked),
           const SizedBox(height: 40),
           Center(
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const IllegalResult()),
+                  MaterialPageRoute(
+                      builder: (context) => const IllegalResult()),
                 );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xffffffff),
-                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 8),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                   side: const BorderSide(
