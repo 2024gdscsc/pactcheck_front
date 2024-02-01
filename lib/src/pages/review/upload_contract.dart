@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pactcheck_front/src/components/image_picker.dart';
 import 'package:pactcheck_front/src/pages/review/illegal_result.dart';
 import 'package:pactcheck_front/src/pages/review/legal_result.dart';
+import 'package:pactcheck_front/src/repository/image_repository.dart';
 
 class UploadContract extends StatefulWidget {
   const UploadContract({super.key});
@@ -43,12 +44,17 @@ class _UploadContractState extends State<UploadContract> {
           const SizedBox(height: 30),
           Center(
             child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const IllegalResult()),
-                );
+              onPressed: () async {
+                try {
+                  //uploadImage(selectedImagePaths);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const IllegalResult()),
+                  );
+                } catch (e) {
+                  print(e);
+                }
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xffffffff),
