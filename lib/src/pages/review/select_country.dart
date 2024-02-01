@@ -46,30 +46,31 @@ class _SelectCountryState extends State<SelectCountry> {
               ),
             ),
             const SizedBox(height: 28),
-            Container(
-              width: 320,
-              height: 50,
-              margin: const EdgeInsets.only(left: 30),
-              padding: const EdgeInsets.only(left: 10),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: const Color(0xff000062),
-                  width: 3.0,
+            GestureDetector(
+              onTap: () {
+                showCountryPicker(
+                  context: context,
+                  showPhoneCode: true,
+                  onSelect: (Country country) {
+                    setState(() {
+                      selectedCountry = country;
+                    });
+                  },
+                );
+              },
+              child: Container(
+                width: 320,
+                height: 50,
+                margin: const EdgeInsets.only(left: 30),
+                padding: const EdgeInsets.only(left: 10),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: const Color(0xff000062),
+                    width: 3.0,
+                  ),
                 ),
-              ),
-              child: GestureDetector(
-                onTap: () {
-                  showCountryPicker(
-                    context: context,
-                    showPhoneCode: true,
-                    onSelect: (Country country) {
-                      setState(() {
-                        selectedCountry = country;
-                      });
-                    },
-                  );
-                },
                 child: Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     if (selectedCountry != null)
                       Text(
@@ -94,12 +95,14 @@ class _SelectCountryState extends State<SelectCountry> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const UploadContract()),
+                    MaterialPageRoute(
+                        builder: (context) => const UploadContract()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xffffffff),
-                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 8),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     side: const BorderSide(

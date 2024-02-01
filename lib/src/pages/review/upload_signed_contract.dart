@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:pactcheck_front/src/components/image_picker.dart';
 import 'package:pactcheck_front/src/pages/review/store_result.dart';
 
-class UploadSignedContract extends StatelessWidget {
+class UploadSignedContract extends StatefulWidget {
   const UploadSignedContract({super.key});
+
+  @override
+  _UploadSignedContractState createState() => _UploadSignedContractState();
+}
+
+class _UploadSignedContractState extends State<UploadSignedContract> {
+  List<String> selectedImagePaths = [];
+
+  void handleImagePicked(String path) {
+    setState(() {
+      selectedImagePaths.add(path);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +37,6 @@ class UploadSignedContract extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const SizedBox(height: 20),
           const Text(
             'Please attach the signed contract.',
             style: TextStyle(
@@ -31,12 +44,8 @@ class UploadSignedContract extends StatelessWidget {
                 fontWeight: FontWeight.w600,
                 fontSize: 20),
           ),
-          const SizedBox(height: 40),
-          Container(
-            width: 300,
-            height: 450,
-            color: const Color(0xffd9d9d9),
-          ),
+          const SizedBox(height: 10),
+          PickImage(onImagePicked: handleImagePicked),
           const SizedBox(height: 40),
           Center(
             child: ElevatedButton(
@@ -48,7 +57,8 @@ class UploadSignedContract extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xffffffff),
-                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 8),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                   side: const BorderSide(
@@ -58,7 +68,7 @@ class UploadSignedContract extends StatelessWidget {
                 ),
               ),
               child: const Text(
-                'Next',
+                'Save',
                 style: TextStyle(
                     color: Color(0xff000062),
                     fontWeight: FontWeight.w600,
