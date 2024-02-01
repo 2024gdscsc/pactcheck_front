@@ -124,7 +124,7 @@ class _PickImageState extends State<PickImage> {
 
   void _buildButton(BuildContext context) {
     showModalBottomSheet(
-        backgroundColor: Color(0xff252553).withOpacity(0.2),
+        backgroundColor: Color(0xffffffff),
         context: context,
         builder: (builder) {
           return Padding(

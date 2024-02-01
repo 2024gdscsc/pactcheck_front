@@ -39,8 +39,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   country_picker: ^2.0.23
+  dio: ^5.4.0
+
+  # image
   image_picker: ^1.0.7
   dotted_border: ^2.1.0
+  path: ^1.9.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
