@@ -56,7 +56,14 @@ class _PastContractsListState extends State<PastContractsList> {
           ),
         ),
         actions: const [],
-        title: const Text('Past Contracts'),
+        title: const Text(
+          'Past Contracts',
+          style: TextStyle(
+            color: Color(0xFF000062),
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
       ),
       body: Center(
         child: Column(
@@ -73,21 +80,21 @@ class _PastContractsListState extends State<PastContractsList> {
                 ),
               ),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                padding: const EdgeInsets.only(left: 10, right: 10),
                 child: TextField(
-                  onChanged: (value) => filterContracts(value),
+                  onChanged: filterContracts,
                   decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Search',
+                    labelText: 'Search',
                     hintStyle: TextStyle(
                       color: Color(0xFF000062),
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
                     ),
                     suffixIcon: Icon(
                       Icons.search,
                       color: Color(0xFF000062),
                     ),
+                    border: InputBorder.none,
                   ),
                 ),
               ),
