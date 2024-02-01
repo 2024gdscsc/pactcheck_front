@@ -16,6 +16,7 @@ class PickImage extends StatefulWidget {
 class _PickImageState extends State<PickImage> {
   final ImagePicker picker = ImagePicker();
   List<XFile> _images = [];
+  int _currentPageIndex = 0;
 
   /*
   XFile? _image;
@@ -58,6 +59,17 @@ class _PickImageState extends State<PickImage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   _buildPhotoArea(),
+                  if (_images.isNotEmpty)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Text(
+                        "Image ${_currentPageIndex + 1} of ${_images.length}",
+                        style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff000062)),
+                      ),
+                    ),
                 ])));
   }
 
@@ -68,6 +80,11 @@ class _PickImageState extends State<PickImage> {
       child: _images.isNotEmpty
           ? PageView.builder(
               itemCount: _images.length,
+              onPageChanged: (int index) {
+                setState(() {
+                  _currentPageIndex = index;
+                });
+              },
               itemBuilder: (context, index) {
                 return Image.file(
                   File(_images[index].path),

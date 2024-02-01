@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pactcheck_front/src/components/image_picker.dart';
 import 'package:pactcheck_front/src/pages/review/illegal_result.dart';
+import 'package:pactcheck_front/src/pages/review/legal_result.dart';
 
 class UploadContract extends StatefulWidget {
   const UploadContract({super.key});
@@ -39,7 +40,7 @@ class _UploadContractState extends State<UploadContract> {
         children: [
           const SizedBox(height: 20),
           PickImage(onImagePicked: handleImagePicked),
-          const SizedBox(height: 40),
+          const SizedBox(height: 30),
           Center(
             child: ElevatedButton(
               onPressed: () {
