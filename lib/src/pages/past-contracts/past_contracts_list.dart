@@ -70,7 +70,7 @@ class _PastContractsListState extends State<PastContractsList> {
           children: <Widget>[
             const SizedBox(height: 20),
             Container(
-              width: 300,
+              width: 400,
               height: 65,
               decoration: ShapeDecoration(
                 color: Color.fromARGB(51, 121, 121, 128),
@@ -102,7 +102,7 @@ class _PastContractsListState extends State<PastContractsList> {
             const SizedBox(height: 20),
             Expanded(
               child: SizedBox(
-                width: 320,
+                width: 400,
                 height: 150,
                 child: ListView.builder(
                   itemCount: filteredContracts.length,

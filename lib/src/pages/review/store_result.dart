@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pactcheck_front/src/app.dart';
 import 'package:pactcheck_front/src/pages/past-contracts/past_contract_view.dart';
-import 'package:pactcheck_front/src/pages/past-contracts/past_original_photo.dart';
 
 class StoreResult extends StatelessWidget {
   const StoreResult({super.key});
@@ -39,7 +38,7 @@ class StoreResult extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => PastOriginalPhoto()),
+                  MaterialPageRoute(builder: (context) => PastContractView()),
                 );
               },
               style: ElevatedButton.styleFrom(
