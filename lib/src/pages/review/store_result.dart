@@ -33,7 +33,7 @@ class StoreResult extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                   fontSize: 20),
             ),
-            const SizedBox(height: 300),
+            const SizedBox(height: 250),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -44,7 +44,7 @@ class StoreResult extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xff000062),
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -55,6 +55,30 @@ class StoreResult extends StatelessWidget {
                     color: Color(0xffffffff),
                     fontWeight: FontWeight.w600,
                     fontSize: 20),
+              ),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PastContractView()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xff000062),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              ),
+              child: const Text(
+                'See Blockchain Hash',
+                style: TextStyle(
+                    color: Color(0xffffffff),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18),
               ),
             ),
             const SizedBox(height: 20),
