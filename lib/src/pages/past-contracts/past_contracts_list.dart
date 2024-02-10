@@ -160,57 +160,60 @@ class _PastContractsListState extends State<PastContractsList> {
               ),
             ),
             const SizedBox(height: 20),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Container(
-                height: 50,
-                child: IconButton(
-                    iconSize: 15,
-                    icon: const Icon(Icons.arrow_back_ios,
-                        color: Color(0xff000062)),
-                    onPressed: () {}),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5.0),
-                child: Text(
-                  '1',
-                  style: const TextStyle(
-                    color: Color(0xFF000062),
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    height: 50,
+                    child: IconButton(
+                        iconSize: 15,
+                        icon: const Icon(Icons.arrow_back_ios,
+                            color: Color(0xff000062)),
+                        onPressed: () {}),
                   ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5.0),
-                child: Text(
-                  '2',
-                  style: const TextStyle(
-                    color: Color(0xFF000062),
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5.0),
+                    child: Text(
+                      '1',
+                      style: const TextStyle(
+                        color: Color(0xFF000062),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5.0),
-                child: Text(
-                  '3',
-                  style: const TextStyle(
-                    color: Color(0xFF000062),
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
+                  // Padding(
+                  //   padding: EdgeInsets.symmetric(horizontal: 5.0),
+                  //   child: Text(
+                  //     '2',
+                  //     style: const TextStyle(
+                  //       color: Color(0xFF000062),
+                  //       fontSize: 15,
+                  //       fontWeight: FontWeight.w600,
+                  //     ),
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: EdgeInsets.symmetric(horizontal: 5.0),
+                  //   child: Text(
+                  //     '3',
+                  //     style: const TextStyle(
+                  //       color: Color(0xFF000062),
+                  //       fontSize: 15,
+                  //       fontWeight: FontWeight.w600,
+                  //     ),
+                  //   ),
+                  // ),
+                  Container(
+                    height: 50,
+                    child: IconButton(
+                        iconSize: 15,
+                        icon: const Icon(Icons.arrow_forward_ios,
+                            color: Color(0xff000062)),
+                        onPressed: () {}),
                   ),
-                ),
-              ),
-              Container(
-                height: 50,
-                child: IconButton(
-                    iconSize: 15,
-                    icon: const Icon(Icons.arrow_forward_ios,
-                        color: Color(0xff000062)),
-                    onPressed: () {}),
-              ),
-            ])
+                ])
           ],
         ),
       ),
