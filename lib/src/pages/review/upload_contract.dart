@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pactcheck_front/src/components/image_picker.dart';
+import 'package:pactcheck_front/src/components/document_scanner.dart';
 import 'package:pactcheck_front/src/pages/review/illegal_result.dart';
 import 'package:pactcheck_front/src/pages/review/legal_result.dart';
 import 'package:pactcheck_front/src/repository/image_repository.dart';
