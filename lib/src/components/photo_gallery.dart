@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:pactcheck_front/src/pages/past-contracts/past_contract_view.dart';
+import 'package:pactcheck_front/src/components/hash_modal.dart';
 
 class PhotoGallery extends StatefulWidget {
   PhotoGallery({super.key});
@@ -44,12 +45,8 @@ class _PhotoGalleryState extends State<PhotoGallery> {
               ),
             ),
             Container(
-              padding: const EdgeInsets.all(20.0),
-              child: GestureDetector(
-                onTap: () {},
-                child: const Icon(Icons.link, color: Colors.white),
-              ),
-            )
+                padding: const EdgeInsets.all(20.0),
+                child: const PopHashModal())
           ],
         ),
         Container(
