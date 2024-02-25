@@ -40,6 +40,7 @@ dev_dependencies:
     sdk: flutter
   country_picker: ^2.0.23
   dio: ^5.4.0
+  http: ^1.2.0
 
   # image
   image_picker: ^1.0.7

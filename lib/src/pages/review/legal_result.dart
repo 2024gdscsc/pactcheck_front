@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pactcheck_front/src/app.dart';
+import 'package:pactcheck_front/src/pages/review/upload_signed_contract.dart';
 
-class LegalResult extends StatelessWidget {
-  const LegalResult({super.key});
+class legalResult extends StatelessWidget {
+  final String summary;
+  const legalResult({super.key,  required this.summary,});
 
   @override
   Widget build(BuildContext context) {
@@ -24,69 +25,47 @@ class LegalResult extends StatelessWidget {
       body: Column(
         children: [
           const SizedBox(height: 20),
-          const Row(
-            children: [
-              Text(
-                "Review the following ",
-                style: TextStyle(
-                    color: Color(0xff000062),
-                    fontWeight: FontWeight.w500,
-                    fontSize: 20),
-              ),
-              Text(
-                "legal ",
-                style: TextStyle(
-                    color: Color(0xff000062),
-                    fontWeight: FontWeight.w700,
-                    fontSize: 20),
-              ),
-              Text(
-                "provisions",
-                style: TextStyle(
-                    color: Color(0xff000062),
-                    fontWeight: FontWeight.w500,
-                    fontSize: 20),
-              ),
-            ],
+          const Text(
+            "There are no legal provisions\n that pose a problem",
+            style: TextStyle(
+                color: Color(0xff000062),
+                fontWeight: FontWeight.w600,
+                fontSize: 20),
           ),
           const SizedBox(height: 40),
           Container(
             width: 300,
             height: 350,
             color: const Color(0xffd9d9d9),
-            child: const Text(
-              "content",
-              style: TextStyle(
+            child: Text(
+              summary,
+              style: const TextStyle(
                   color: Color(0xff000062),
                   fontWeight: FontWeight.w600,
                   fontSize: 20),
             ),
           ),
-          const SizedBox(height: 40),
+          const SizedBox(height: 100),
           Center(
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const App()),
+                  MaterialPageRoute(
+                      builder: (context) => const UploadSignedContract()),
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xffffffff),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                backgroundColor: const Color(0xff000062),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
-                  side: const BorderSide(
-                    color: Color(0xff000062),
-                    width: 3.0,
-                  ),
                 ),
               ),
               child: const Text(
-                'Back to Main',
+                'Sign Contract',
                 style: TextStyle(
-                    color: Color(0xff000062),
+                    color: Color(0xffffffff),
                     fontWeight: FontWeight.w600,
                     fontSize: 20),
               ),

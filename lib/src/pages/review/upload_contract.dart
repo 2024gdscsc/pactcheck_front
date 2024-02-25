@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pactcheck_front/src/components/image_picker.dart';
 import 'package:pactcheck_front/src/pages/review/illegal_result.dart';
 import 'package:pactcheck_front/src/pages/review/legal_result.dart';
-import 'package:pactcheck_front/src/repository/image_repository.dart';
+import 'package:pactcheck_front/src/repository/analysis_repository.dart';
 
 class UploadContract extends StatefulWidget {
   const UploadContract({super.key});
@@ -46,11 +46,14 @@ class _UploadContractState extends State<UploadContract> {
             child: ElevatedButton(
               onPressed: () async {
                 try {
-                  //uploadImage(selectedImagePaths);
+                  final result = await sendImages(selectedImagePaths);
+                  final summary = result['summary'] as String;
+                  //final agreementDate = result['agreement_date'] as String;
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const IllegalResult()),
+                        builder: (context) => legalResult(summary: summary)),
                   );
                 } catch (e) {
                   print(e);
