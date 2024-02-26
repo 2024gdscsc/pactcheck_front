@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:pactcheck_front/src/components/text_highlight.dart';
 
 class PickImage extends StatefulWidget {
   final Function(String) onImagePicked;
@@ -17,19 +18,6 @@ class _PickImageState extends State<PickImage> {
   final ImagePicker picker = ImagePicker();
   List<XFile> _images = [];
   int _currentPageIndex = 0;
-
-  /*
-  XFile? _image;
-  Future getImage(ImageSource imageSource) async {
-    final XFile? pickedFile = await picker.pickImage(source: imageSource);
-    if (pickedFile != null) {
-      setState(() {
-        _image = XFile(pickedFile.path);
-      });
-      widget.onImagePicked(pickedFile.path);
-    }
-    Navigator.pop(context);
-  }*/
 
   Future getImages(ImageSource imageSource) async {
     try {

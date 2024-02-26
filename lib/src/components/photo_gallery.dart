@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-// import 'package:pactcheck_front/src/pages/past-contracts/past_contract_view.dart';
 
 class PhotoGallery extends StatefulWidget {
   PhotoGallery({super.key});
-  // Example original photo URL
+
   State<PhotoGallery> createState() => _PhotoGalleryState();
 }
 
 @override
 class _PhotoGalleryState extends State<PhotoGallery> {
   final String originalPhotoUrl = 'assets/images/ex1.jpg';
-  // Example thumbnail URLs
   final List<String> thumbnailUrls = [
     'assets/images/ex1.jpg',
     'assets/images/ex2.jpg',
     'assets/images/ex3.jpg',
-    // Add more thumbnail URLs as needed
   ];
 
   var shownindex = 0;
@@ -66,8 +63,8 @@ class _PhotoGalleryState extends State<PhotoGallery> {
                     padding: const EdgeInsets.all(8.0),
                     child: Image.asset(
                       thumbnailUrls[index],
-                      width: 60, // Adjust the width as needed
-                      height: 80, // Adjust the height as needed
+                      width: 60,
+                      height: 80,
                       fit: BoxFit.cover,
                     ),
                   ));
