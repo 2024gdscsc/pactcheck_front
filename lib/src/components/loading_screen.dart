@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:pactcheck_front/src/pages/review/legal_result.dart';
 import 'package:pactcheck_front/src/pages/review/illegal_result.dart';
 
 class LoadingScreen extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pactcheck_front/src/pages/review/upload_signed_contract.dart';
+import 'package:pactcheck_front/src/app.dart';
 
 class IllegalResult extends StatelessWidget {
   const IllegalResult({super.key});
@@ -24,12 +24,30 @@ class IllegalResult extends StatelessWidget {
       body: Column(
         children: [
           const SizedBox(height: 20),
-          const Text(
-            "There are no legal provisions\n that pose a problem",
-            style: TextStyle(
-                color: Color(0xff000062),
-                fontWeight: FontWeight.w600,
-                fontSize: 20),
+          const Row(
+            children: [
+              Text(
+                "Review the following ",
+                style: TextStyle(
+                    color: Color(0xff000062),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20),
+              ),
+              Text(
+                "legal ",
+                style: TextStyle(
+                    color: Color(0xff000062),
+                    fontWeight: FontWeight.w700,
+                    fontSize: 20),
+              ),
+              Text(
+                "provisions",
+                style: TextStyle(
+                    color: Color(0xff000062),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20),
+              ),
+            ],
           ),
           const SizedBox(height: 40),
           Container(
@@ -44,27 +62,31 @@ class IllegalResult extends StatelessWidget {
                   fontSize: 20),
             ),
           ),
-          const SizedBox(height: 100),
+          const SizedBox(height: 40),
           Center(
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const UploadSignedContract()),
+                  MaterialPageRoute(builder: (context) => const App()),
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xff000062),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                backgroundColor: const Color(0xffffffff),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
+                  side: const BorderSide(
+                    color: Color(0xff000062),
+                    width: 3.0,
+                  ),
                 ),
               ),
               child: const Text(
-                'Sign Contract',
+                'Back to Main',
                 style: TextStyle(
-                    color: Color(0xffffffff),
+                    color: Color(0xff000062),
                     fontWeight: FontWeight.w600,
                     fontSize: 20),
               ),

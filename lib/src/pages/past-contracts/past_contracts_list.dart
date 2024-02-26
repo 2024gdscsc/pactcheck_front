@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pactcheck_front/src/pages/past-contracts/past_contract_view.dart';
+import 'package:dio/dio.dart';
 
 class PastContractsList extends StatefulWidget {
   const PastContractsList({super.key});
@@ -8,34 +9,85 @@ class PastContractsList extends StatefulWidget {
   _PastContractsListState createState() => _PastContractsListState();
 }
 
+class ContractInformation {
+  final int id;
+  final String document_name;
+  final DateTime agreement_date;
+  final DateTime effective_date;
+  final String governing_law;
+  final List<String> parties;
+  final int initial_term;
+  final String notice_to_terminate_renewal;
+  final int renewal_term;
+  final String summary;
+  final List<String> key_points;
+
+  ContractInformation({
+    required this.id,
+    required this.document_name,
+    required this.agreement_date,
+    required this.effective_date,
+    required this.governing_law,
+    required this.parties,
+    required this.initial_term,
+    required this.notice_to_terminate_renewal,
+    required this.renewal_term,
+    required this.summary,
+    required this.key_points,
+  });
+
+  factory ContractInformation.fromJson(Map<String, dynamic> json) {
+    return ContractInformation(
+      id: json['id'] as int,
+      document_name: json['document_name'] as String,
+      agreement_date: DateTime.parse(json['agreement_date'] as String),
+      effective_date: DateTime.parse(json['effective_date'] as String),
+      governing_law: json['governing_law'] as String,
+      parties: (json['parties'] as List).map((e) => e as String).toList(),
+      initial_term: json['initial_term'] as int,
+      notice_to_terminate_renewal:
+          json['notice_to_terminate_renewal'] as String,
+      renewal_term: json['renewal_term'] as int,
+      summary: json['summary'] as String,
+      key_points: (json['key_points'] as List).map((e) => e as String).toList(),
+    );
+  }
+}
+
+// Define other classes like Party and NoticeToTerminateRenewal based on their schemas
+
 class _PastContractsListState extends State<PastContractsList> {
-  List<String> contracts = [
-    'Employment Contract',
-    'Non-Disclosure Agreement',
-    'Independent Contractor Agreement',
-    'Consulting Agreement',
-  ];
+  List<ContractInformation> contracts = [];
 
-  List<String> contractDate = [
-    DateTime.now().toString(),
-    DateTime.now().add(Duration(days: 1)).toString(),
-    DateTime.now().add(Duration(days: 2)).toString(),
-    DateTime.now().add(Duration(days: 3)).toString(),
-  ];
-
-  List<String> filteredContracts = [];
+  List<ContractInformation> filteredContracts = [];
 
   @override
   void initState() {
     super.initState();
     filteredContracts = contracts;
+    fetchContracts();
+  }
+
+  Future fetchContracts() async {
+    try {
+      var dio = Dio();
+      var response = await dio.get('/rec/contract/list');
+      var contractData = response.data as List;
+      contracts =
+          contractData.map((e) => ContractInformation.fromJson(e)).toList();
+      setState(() {});
+    } catch (e) {
+      print("Error fetching contracts: $e");
+      // Handle error gracefully, e.g., display an error message
+    }
   }
 
   void filterContracts(String query) {
     setState(() {
       filteredContracts = contracts
-          .where((contract) =>
-              contract.toLowerCase().contains(query.toLowerCase()))
+          .where((contract) => contract.document_name
+              .toLowerCase()
+              .contains(query.toLowerCase()))
           .toList();
     });
   }
@@ -112,7 +164,8 @@ class _PastContractsListState extends State<PastContractsList> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const PastContractView(),
+                            builder: (context) => PastContractView(
+                                contractId: filteredContracts[index].id),
                           ),
                         );
                       },
@@ -133,7 +186,7 @@ class _PastContractsListState extends State<PastContractsList> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                filteredContracts[index],
+                                filteredContracts[index].document_name,
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(
                                   color: Color(0xFF000062),
@@ -142,7 +195,7 @@ class _PastContractsListState extends State<PastContractsList> {
                                 ),
                               ),
                               Text(
-                                contractDate[index],
+                                '${filteredContracts[index].agreement_date} (${filteredContracts[index].effective_date})',
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(
                                   color: Color(0xFF000062),

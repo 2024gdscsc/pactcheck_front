@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:pactcheck_front/src/components/photo_gallery.dart';
 import 'package:pactcheck_front/src/components/image_picker.dart';
 import 'package:pactcheck_front/src/components/extract_text.dart';
-
+import 'package:dio/dio.dart';
 import '../../components/text_highlight.dart';
+import 'package:pactcheck_front/src/pages/past-contracts/past_contracts_list.dart';
 
 class PastContractView extends StatefulWidget {
-  const PastContractView({super.key});
+  final int contractId;
+  const PastContractView({super.key, required this.contractId});
 
   @override
   _PastContractViewState createState() => _PastContractViewState();
@@ -24,6 +26,9 @@ class _PastContractViewState extends State<PastContractView> {
 
   List<String> _searchResultImagePaths = [];
   List<List<Rect>> _searchResultHighlights = [];
+  Dio dio = Dio(); // Create a Dio instance for API calls
+  int contractId = 0; // Assuming you'll have a contract ID to fetch
+  List<ImageProvider> contractImages = [];
 
   List<Rect> adjustHighlights(List<Rect> originalHighlights, double scale) {
     return originalHighlights.map((rect) {
@@ -39,6 +44,23 @@ class _PastContractViewState extends State<PastContractView> {
   @override
   void initState() {
     super.initState();
+    fetchContractImages(widget.contractId);
+  }
+
+  Future fetchContractImages(int contractId) async {
+    try {
+      var response =
+          await dio.get('/rec/contract', queryParameters: {'id': contractId});
+      var contractInformation = response.data;
+      setState(() {
+        contractImages = contractInformation.images
+            .map((imageUrl) => NetworkImage(imageUrl))
+            .toList();
+      });
+    } catch (e) {
+      print("Error fetching contract images: $e");
+      // Handle error gracefully, e.g., display an error message
+    }
   }
 
   void _onSearch(String query) async {
@@ -139,7 +161,8 @@ class _PastContractViewState extends State<PastContractView> {
                 ),
               ),
               const SizedBox(height: 20),
-              PickImage(onImagePicked: handleImagePicked),
+              //PickImage(onImagePicked: handleImagePicked),
+              _buildContractImageGallery(contractImages),
               ..._buildSearchResults(),
             ],
           ),
@@ -164,8 +187,8 @@ class _PastContractViewState extends State<PastContractView> {
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {
           Size originalSize = snapshot.data!;
-          double scale = min(
-              400 / originalSize.width, 500 / originalSize.height);
+          double scale =
+              min(400 / originalSize.width, 500 / originalSize.height);
           List<Rect> adjustedHighlights = adjustHighlights(highlights, scale);
 
           return Padding(
@@ -179,7 +202,8 @@ class _PastContractViewState extends State<PastContractView> {
                 ),
                 Positioned.fill(
                   child: CustomPaint(
-                    size: Size(originalSize.width * scale, originalSize.height * scale),
+                    size: Size(originalSize.width * scale,
+                        originalSize.height * scale),
                     painter: HighlightPainter(highlights: adjustedHighlights),
                   ),
                 ),
@@ -205,4 +229,23 @@ class _PastContractViewState extends State<PastContractView> {
     );
     return completer.future;
   }
+}
+
+Widget _buildContractImageGallery(List<ImageProvider> images) {
+  return Container(
+    height: 200, // adjust height as needed
+    child: ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: images.length,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image(
+            image: images[index],
+            fit: BoxFit.cover,
+          ),
+        );
+      },
+    ),
+  );
 }

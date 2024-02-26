@@ -38,7 +38,8 @@ class StoreResult extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => PastContractView()),
+                  MaterialPageRoute(
+                      builder: (context) => PastContractView(contractId: 1)),
                 );
               },
               style: ElevatedButton.styleFrom(

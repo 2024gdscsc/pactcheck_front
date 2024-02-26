@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:pactcheck_front/src/components/text_highlight.dart';
+import 'package:dio/dio.dart';
 
 class PickImage extends StatefulWidget {
   final Function(String) onImagePicked;
@@ -18,6 +19,7 @@ class _PickImageState extends State<PickImage> {
   final ImagePicker picker = ImagePicker();
   List<XFile> _images = [];
   int _currentPageIndex = 0;
+  Dio dio = Dio(); // Create a Dio instance for API calls
 
   Future getImages(ImageSource imageSource) async {
     try {
@@ -27,13 +29,34 @@ class _PickImageState extends State<PickImage> {
           _images = pickedFiles;
         });
 
-        pickedFiles.forEach((file) {
-          widget.onImagePicked(file.path);
-        });
+        // Send images using PUT method
+        await sendImages(pickedFiles);
       }
       Navigator.pop(context);
     } catch (e) {
       print(e);
+    }
+  }
+
+  Future sendImages(List<XFile> images) async {
+    for (var image in images) {
+      try {
+        var formData = FormData.fromMap({
+          "image": await MultipartFile.fromFile(image.path),
+          // Add other necessary fields based on your API requirements
+        });
+        var response = await dio.put('/ana/contract', data: formData);
+        // Handle the response
+        if (response.statusCode == 200) {
+          // Image uploaded successfully
+          print("Image uploaded: ${response.data}");
+        } else {
+          // Handle error
+          print("Image upload failed: ${response.statusCode}");
+        }
+      } catch (e) {
+        print("Image upload error: $e");
+      }
     }
   }
 
