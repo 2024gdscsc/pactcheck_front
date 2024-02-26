@@ -32,18 +32,18 @@ class LegalResult extends StatelessWidget {
                 fontSize: 20),
           ),
           const SizedBox(height: 40),
-          Container(
-            width: 300,
-            height: 350,
-            color: const Color(0xffd9d9d9),
-            child: const Text(
-              "content",
-              style: TextStyle(
-                  color: Color(0xff000062),
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20),
-            ),
-          ),
+          // Container(
+          //   width: 300,
+          //   height: 350,
+          //   color: const Color(0xffd9d9d9),
+          //   child: const Text(
+          //     "content",
+          //     style: TextStyle(
+          //         color: Color(0xff000062),
+          //         fontWeight: FontWeight.w600,
+          //         fontSize: 20),
+          //   ),
+          // ),
           const SizedBox(height: 100),
           Center(
             child: ElevatedButton(
