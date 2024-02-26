@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pactcheck_front/src/components/document_scanner.dart';
+//import 'package:pactcheck_front/src/components/document_scanner.dart';
 import 'package:pactcheck_front/src/pages/review/illegal_result.dart';
 import 'package:pactcheck_front/src/pages/review/legal_result.dart';
 import 'package:pactcheck_front/src/repository/image_repository.dart';
+import 'package:pactcheck_front/src/components/image_picker.dart';
+import 'package:pactcheck_front/src/components/loading_screen.dart';
 
 class UploadContract extends StatefulWidget {
   const UploadContract({super.key});
@@ -47,10 +49,11 @@ class _UploadContractState extends State<UploadContract> {
               onPressed: () async {
                 try {
                   //uploadImage(selectedImagePaths);
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const IllegalResult()),
+                        builder: (context) => const LoadingScreen()),
                   );
                 } catch (e) {
                   print(e);
