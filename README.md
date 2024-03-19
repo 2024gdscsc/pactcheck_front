@@ -1,16 +1,14 @@
-# pactcheck_front
+# Pactcheck
 
-A new Flutter project.
+Pactcheck is a product that can review all the contract terms easily and store it safely.
 
-## Getting Started
+The existing power imbalances, lack of accessible legal resources, and unjust system are all contributing to the problem.
+The lack of accessible legal resources is making it difficult for businesses to challenge unfair terms and conditions.
+The unjust system is leading to exploitative terms and unequal outcomes for businesses.
+These problems are having a negative impact on businesses, making it difficult for them to compete and succeed.
 
-This project is a starting point for a Flutter application.
+Our service allows users to check the legal statements in their contract before they sign on it, preventing the problems due to the unfair contract terms.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## How to execute
+1. Clone this repository in your IDE.
+2. In VS Code, open the main.dart file and click the run button. Select the device in advance if needed. 
